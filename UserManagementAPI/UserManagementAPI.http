@@ -1,0 +1,32 @@
+@base = http://localhost:5100
+@id = REPLACE_WITH_ID_FROM_POST_RESPONSE
+
+### Health check
+GET {{base}}/health
+
+### Get all users
+GET {{base}}/api/users
+
+### Create a user
+POST {{base}}/api/users
+Content-Type: application/json
+
+{"name":"Sarah Ahmed","email":"sarah@example.com","department":"HR"}
+
+### Get one user
+GET {{base}}/api/users/{{id}}
+
+### Update a user
+PUT {{base}}/api/users/{{id}}
+Content-Type: application/json
+
+{"name":"Sarah Ahmed","email":"sarah@example.com","department":"IT"}
+
+### Reject invalid email
+POST {{base}}/api/users
+Content-Type: application/json
+
+{"name":"Invalid","email":"not-an-email","department":"IT"}
+
+### Delete a user
+DELETE {{base}}/api/users/{{id}}
